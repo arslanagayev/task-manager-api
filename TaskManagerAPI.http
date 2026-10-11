@@ -1,6 +1,22 @@
 @TaskManagerAPI_HostAddress = http://localhost:5106
 
-GET {{TaskManagerAPI_HostAddress}}/weatherforecast/
+### List all tasks
+GET {{TaskManagerAPI_HostAddress}}/api/tasks
 Accept: application/json
 
-###
+### Create a task
+POST {{TaskManagerAPI_HostAddress}}/api/tasks
+Content-Type: application/json
+
+{
+  "title": "Write the README",
+  "isCompleted": false
+}
+
+### A task without a title is rejected (400)
+POST {{TaskManagerAPI_HostAddress}}/api/tasks
+Content-Type: application/json
+
+{
+  "title": ""
+}
